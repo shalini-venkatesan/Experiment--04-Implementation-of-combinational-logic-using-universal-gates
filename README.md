@@ -26,18 +26,64 @@ NOR gate is actually a combination of two logic gates: OR gate followed by NOT g
 
 F=(((C.B'.A)+(D.C'.A)+(C.B'.A))')'
 
-## Logic Diagram
-## Procedure
+## Logic Diagram :
+![output](/log.png)
+
+## Procedure :
+1.Create a project with required entities.
+
+2.Create a module along with respective file name.
+
+3.Run the respective programs for the given boolean equations.
+
+4.Run the module and get the respective RTL outputs.
+
+5.Create university program(VWF) for getting timing diagram.
+
+6.Give the respective inputs for timing diagram and obtain the results
 ## Program:
-/*
+```
 Program to implement the given logic function using NAND and NOR gates and to verify its operations in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
-*/
-## RTL realization
+Developed by: shalini v
+RegisterNumber:  212222240096
+Using NAND gates:
+
+module NAND(A,B,C,D,F);
+input A,B,C,D;
+output F;
+wire P,Q,R;
+assign P=(~(~C & B & A));
+assign Q=(~(~D & C & A));
+assign R=(~(C & ~B & A));
+assign F=~(P & Q & R);
+endmodule
+
+Using NOR gates:
+
+module NOR(A,B,C,D,F);
+input A,B,C,D;
+output F;
+wire P,Q,R,S;
+assign P = (C & ~B & A);
+assign Q = (D & ~C & A);
+assign R = (C & ~B & A);
+assign S = (~(P | Q | R));
+assign F = (~S);
+endmodule
+```
 
 ## Output:
-## RTL
+
+## RTL realization:
+## NAND combination:
+![output](/expsix%20output.png)
+## NOR combination:
+![output](/expseven%20output.png)
+
 ## Timing Diagram
+## NAND combination:
+![output](/expsix%20timing%20dg.png)
+## NOR combination:
+![output](/expseven%20timing%20dg.png)
 ## Result:
 Thus the given logic functions are implemented using NAND and NOR gates and their operations are verified using Verilog programming.

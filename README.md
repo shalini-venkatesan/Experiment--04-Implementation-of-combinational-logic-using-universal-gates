@@ -46,44 +46,48 @@ F=(((C.B'.A)+(D.C'.A)+(C.B'.A))')'
 Program to implement the given logic function using NAND and NOR gates and to verify its operations in quartus using Verilog programming.
 Developed by: shalini v
 RegisterNumber:  212222240096
-Using NAND gates:
 
-module NAND(A,B,C,D,F);
+F1= A’B’C’D’+AC’D’+B’CD’+A’BCD+BC’D
+
+module f1(A,B,C,D,F1);
 input A,B,C,D;
-output F;
-wire P,Q,R;
-assign P=(~(~C & B & A));
-assign Q=(~(~D & C & A));
-assign R=(~(C & ~B & A));
-assign F=~(P & Q & R);
+output F1;
+wire p,q,r,s,t;
+assign p = (~A & ~B & ~C & ~D);
+assign q = (A & ~C & ~D);
+assign r = (~B & C & ~D);
+assign s = (~A & B & C & D);
+assign t = (B & ~C & D);
+assign F1 = p | q | r | s | t;
 endmodule
 
-Using NOR gates:
+F2=xy’z+x’y’z+w’xy+wx’y+wxy
 
-module NOR(A,B,C,D,F);
-input A,B,C,D;
-output F;
-wire P,Q,R,S;
-assign P = (C & ~B & A);
-assign Q = (D & ~C & A);
-assign R = (C & ~B & A);
-assign S = (~(P | Q | R));
-assign F = (~S);
+module imp(w,x,y,z,F2);
+input w,x,y,z;
+output F2;
+wire p,q,r,s,t;
+assign p= (x & ~y & z);
+assign q= (~x & ~y & z);
+assign r= (~w & x & y);
+assign s= (w & ~x & y);
+assign t= (w & x & y);
+assign F2= p | q | r | s | t;
 endmodule
 ```
 
 ## Output:
 
 ## RTL realization:
-## NAND combination:
-![output](/expsix%20output.png)
-## NOR combination:
-![output](/expseven%20output.png)
+## F1:
+![image](https://github.com/shalini-venkatesan/Experiment--04-Implementation-of-combinational-logic-using-universal-gates/assets/118720291/f09eab89-7c40-405d-aa0b-7e7e0219a3d0)
+## F2:
+![image](https://github.com/shalini-venkatesan/Experiment--04-Implementation-of-combinational-logic-using-universal-gates/assets/118720291/74634cbc-8a12-46ab-8df7-a85ff20f0ef2)
 
 ## Timing Diagram
-## NAND combination:
-![output](/expsix%20timing%20dg.png)
-## NOR combination:
-![output](/expseven%20timing%20dg.png)
+## F1:
+![image](https://github.com/shalini-venkatesan/Experiment--04-Implementation-of-combinational-logic-using-universal-gates/assets/118720291/8530e093-870b-4999-b491-69158379b470)
+## F2:
+![image](https://github.com/shalini-venkatesan/Experiment--04-Implementation-of-combinational-logic-using-universal-gates/assets/118720291/f3fe66f7-f639-4628-9712-494f8c080226)
 ## Result:
 Thus the given logic functions are implemented using NAND and NOR gates and their operations are verified using Verilog programming.
